@@ -1,0 +1,3 @@
+[submodule "pekk4.kubectl_krew"]
+	path = pekk4.kubectl_krew
+	url = https://github.com/Pekk4/ansible-role-kubectl-krew

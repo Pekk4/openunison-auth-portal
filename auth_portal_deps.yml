@@ -1,0 +1,23 @@
+- name: Install Helm, Krew & ouctl for deploying OpenUnison Authentication Portal
+  hosts: all
+  tasks:
+
+    - name: Install Helm
+      include_role: 
+        name: gantsign.helm
+
+    - name: Install kubectl
+      include_role:
+        name: andrewrothstein.kubectl
+    
+    - name: Install Krew
+      include_role:
+        name: pekk4.kubectl_krew
+
+    - name: Download ouctl
+      uri:
+        url: https://nexus.tremolo.io/repository/ouctl/ouctl.yaml
+        dest: /tmp/ouctl.yaml
+      
+    - name: Install ouctl
+      shell: "kubectl krew install --manifest=/tmp/ouctl.yaml"
